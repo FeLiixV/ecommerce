@@ -84,95 +84,23 @@
             <div class="latest-product">
                 <h2 class="section-title">Produtos</h2>
                 <div class="product-carousel">
+                    {loop="$products"}
                     <div class="single-product">
                         <div class="product-f-image">
-                            <img src="/res/site/img/m1.png" alt="">
+                            <img src="{$value.desphoto}" alt="">
                             <div class="product-hover">
-                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> + CARRINHO</a>
-                                <a href="#" class="view-details-link"><i class="fa fa-link"></i> VER DETALHES</a>
+                                <a href="/cart/{$value.idproduct}/add" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Comprar</a>
+                                <a href="/products/{$value.desurl}" class="view-details-link"><i class="fa fa-link"></i> Ver Detalhes</a>
                             </div>
                         </div>
                         
-                        <h2><a href="#">Motul 4T 15w50 7100</a></h2>
+                        <h2><a href="/products/{$value.desurl}">{$value.desproduct}</a></h2>
                         
                         <div class="product-carousel-price">
-                            <ins>$999.00</ins>
+                            <ins>R${function="formatPrice($value.vlprice)"}</ins>
                         </div> 
                     </div>
-                    <div class="single-product">
-                        <div class="product-f-image">
-                            <img src="/res/site/img/m3.png" alt="">
-                            <div class="product-hover">
-                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> + CARRINHO</a>
-                                <a href="#" class="view-details-link"><i class="fa fa-link"></i> VER DETALHES</a>
-                            </div>
-                        </div>
-                        
-                        <h2>Filtro de Ar Fox/Gol/Voyage</h2>
-                        <div class="product-carousel-price">
-                            <ins>$999.99</ins>
-                        </div> 
-                    </div>
-                    <div class="single-product">
-                        <div class="product-f-image">
-                            <img src="/res/site/img/m2.png" alt="">
-                            <div class="product-hover">
-                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> + CARRINHO</a>
-                                <a href="#" class="view-details-link"><i class="fa fa-link"></i> VER DETALHES</a>
-                            </div>
-                        </div>
-                        
-                        <h2>Havoline SAE 5w30</h2>
-
-                        <div class="product-carousel-price">
-                            <ins>$0.00</ins>
-                        </div>                                 
-                    </div>
-                    <div class="single-product">
-                        <div class="product-f-image">
-                            <img src="/res/site/img/m4.png" alt="">
-                            <div class="product-hover">
-                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> + CARRINHO</a>
-                                <a href="#" class="view-details-link"><i class="fa fa-link"></i> VER DETALHES</a>
-                            </div>
-                        </div>
-                        
-                        <h2><a href="#">Shell Rimula RT4 X 15w40</a></h2>
-
-                        <div class="product-carousel-price">
-                            <ins>$0.00</ins>
-                        </div>                            
-                    </div>
-                    <div class="single-product">
-                        <div class="product-f-image">
-                            <img src="/res/site/img/m5.png" alt="">
-                            <div class="product-hover">
-                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> + CARRINHO</a>
-                                <a href="#" class="view-details-link"><i class="fa fa-link"></i> VER DETALHES</a>
-                            </div>
-                        </div>
-                        
-                        <h2>Castrol Edge Professional 0w20</h2>
-
-                        <div class="product-carousel-price">
-                            <ins>$0.00</ins>
-                        </div>                                 
-                    </div>
-                    <div class="single-product">
-                        <div class="product-f-image">
-                            <img src="/res/site/img/m1.png" alt="">
-                            <div class="product-hover">
-                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> + CARRINHO</a>
-                                <a href="#" class="view-details-link"><i class="fa fa-link"></i> VER DETALHES</a>
-                            </div>
-                        </div>
-                        
-                        <h2><a href="#">Motul 4T 15w50 7100</a></h2>
-                        
-                        <div class="product-carousel-price">
-                            <ins>$999.00</ins>
-                        </div>                      
-                    </div>
+                    {/loop}
                 </div>
             </div>
         </div>

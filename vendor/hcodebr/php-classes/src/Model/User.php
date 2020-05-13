@@ -31,37 +31,38 @@ class User extends Model {
     }
 
     public static function checkLogin($inadmin = true)
-    {
+	{
+        
+		if (
+			!isset($_SESSION[User::SESSION])
+			||
+			!$_SESSION[User::SESSION]
+			||
+			!(int)$_SESSION[User::SESSION]["iduser"] > 0
+		) {
+            
+			//Não está logado
+			return false;
 
-        if (
-            !isset($_SESSION[User::SESSION])
-            ||
-            !$_SESSION[User::SESSION]
-            ||
-            !(int)$_SESSION[User::SESSION]["iduser"] > 0
-        ) {
-            //Não está logado
-            return false;
+		} else {
 
-        } else {
+			if ($inadmin === true && (bool)$_SESSION[User::SESSION]['inadmin'] === true) {
 
-            if ($inadmin === true && (bool)$_SESSION[User::SESSION]['inadmin'] === true) {
-                
-                return true;
+				return true;
 
-            } else if ($inadmin === false) {
-                
-                return true;
+			} else if ($inadmin === false) {
 
-            } else {
+				return true;
 
-                return false;
+			} else {
 
-            }
+				return false;
 
-        }
+			}
 
-    }
+		}
+
+	}
 
     public static function login($login, $password)
     {
@@ -295,7 +296,32 @@ class User extends Model {
 			'cost'=>12
 		]);
 
-	}
+    }
+    
+    public static function setError ($msg)
+    {
+
+        $_SESSION[User::ERROR] = $msg;
+
+    }
+
+    public static function getError ()
+    {
+
+        $msg = (isset($_SESSION[User::ERROR]) && $_SESSION[User::ERROR]) ? $_SESSION[User::ERROR] : '';
+        
+        User::clearError();
+
+        return $msg;
+
+    }
+
+    public static function clearError()
+    {
+
+        $_SESSION[User::ERROR] = NULL;
+
+    }
 }
 
 ?>
